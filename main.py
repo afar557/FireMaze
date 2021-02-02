@@ -3,19 +3,27 @@ import pygame
 
 
 def generateMaze(dimension, p):
+    # initialize maze
     maze=[]
+
     for i in range(dimension): 
+        # initialize col to set vals
         column = [] 
         for j in range(dimension): 
+            # for each square check if random(0,1) is less than or equal to p
             if (random.uniform(0,1)<= p):
-                # blocked
+                # set square to blocked
                 column.append(1)
             else:
-                # open
+                # set square to open
                 column.append(0) 
-        maze.append(column)  
+        # append col to maze
+        maze.append(column)
+
+    # set start & goal to open  
     maze[0][0] = 0
     maze[dimension-1][dimension-1]=0
+
     return maze 
 
 def main():
