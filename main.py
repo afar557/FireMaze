@@ -1,6 +1,8 @@
 import random
 import pygame
-
+from bfs import bfs
+from dfs import dfs
+from collections import deque
 
 def generateMaze(dimension, p):
     # initialize maze
@@ -28,9 +30,10 @@ def generateMaze(dimension, p):
 
 def main():
     dimension = 10
-    p = 0.5
+    p = 0
     grid = generateMaze(dimension,p)
     print(grid)
+    grid = bfs(grid, (0,0), (9,9))
 
     # Define colors for maze
     BLACK = (0, 0, 0)
@@ -75,6 +78,8 @@ def main():
                 # if area is blocked then set color to gray
                 if grid[row][column] == 1:
                     color = GRAY
+                elif grid[row][column] == 2:
+                    color = GREEN
                 # if this area is open set color to white
                 elif grid[row][column] == 0:
                     color = WHITE
