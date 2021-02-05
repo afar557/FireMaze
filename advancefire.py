@@ -21,10 +21,10 @@ def advance_fire_one_step(maze, q):
                 rand = random.uniform(0,1)
                 if (rand <= prob):
                     newMaze[x][y] = 5
-                    print(x,',',y)
-    print(newMaze)
+                    # print(x,',',y)
+    # print(newMaze)
     return newMaze
 
-advance_fire_one_step(maze, 1)
+# advance_fire_one_step(maze, 1)
 
             

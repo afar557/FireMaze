@@ -3,38 +3,17 @@ import pygame
 from bfs import bfs
 from dfs import dfs
 from collections import deque
-from advancefire import advance_fire_one_step
-
-def generateMaze(dimension, p):
-    # initialize maze
-    maze=[]
-
-    for i in range(dimension): 
-        # initialize col to set vals
-        column = [] 
-        for j in range(dimension): 
-            # for each square check if random(0,1) is less than or equal to p
-            if (random.uniform(0,1)<= p):
-                # set square to blocked
-                column.append(1)
-            else:
-                # set square to open
-                column.append(0) 
-        # append col to maze
-        maze.append(column)
-
-    # set start & goal to open  
-    maze[0][0] = 0
-    maze[dimension-1][dimension-1]=0
-
-    return maze 
+from advancefire import advance_fire_one_step 
+from generateMaze import generateMaze, generateFireMaze
 
 def main():
     dimension = 10
-    p = 0
-    grid = generateMaze(dimension,p)
-    print(grid)
-    grid = bfs(grid, (0,0), (9,9))
+    p = .5
+    grid = generateFireMaze(dimension,p)
+    grid = advance_fire_one_step(grid, 1)
+    # grid = generateMaze(dimension,p)
+    # print(grid)
+    # grid = bfs(grid, (0,0), (9,9))
 
     # Define colors for maze
     BLACK = (0, 0, 0)
@@ -79,8 +58,12 @@ def main():
                 # if area is blocked then set color to gray
                 if grid[row][column] == 1:
                     color = GRAY
+                # set cell to green to display the path
                 elif grid[row][column] == 2:
                     color = GREEN
+                # if the cell is on fire, set color to red
+                elif grid[row][column] == 5:
+                    color = RED
                 # if this area is open set color to white
                 elif grid[row][column] == 0:
                     color = WHITE
