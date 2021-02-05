@@ -3,6 +3,7 @@ import pygame
 from bfs import bfs
 from dfs import dfs
 from collections import deque
+from advancefire import advance_fire_one_step
 
 def generateMaze(dimension, p):
     # initialize maze
