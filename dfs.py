@@ -1,3 +1,4 @@
+# use tuples instead of arrays
 maze = [[0,0,0],
         [0,0,0],
         [0,0,0]]

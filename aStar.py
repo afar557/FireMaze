@@ -11,17 +11,18 @@ def heuristic(a,b):
 
 
 def aStar(maze, start, finish):
+    # creates fringe using priority queue & add in start
     fringe = PriorityQueue()
-
     fringe.put((0, start))
 
+    # creates dict to store previously visited indices & currentdistance traversed
     prev= {}
     currentDistance = {}
-
     # insert into dicts
     prev[start] = None
     currentDistance[start] = 0
 
+    # initialize x,y values to start
     x,y = start
 
     while not fringe.empty():
