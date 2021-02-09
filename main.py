@@ -5,14 +5,16 @@ from dfs import dfs
 from collections import deque
 from advancefire import advance_fire_one_step 
 from generateMaze import generateMaze, generateFireMaze
+from aStar import aStar
 
 def main():
     dimension = 10
     p = .5
-    grid = generateFireMaze(dimension,p)
-    grid = advance_fire_one_step(grid, 1)
-    # grid = generateMaze(dimension,p)
+    # grid = generateFireMaze(dimension,p)
+    # grid = advance_fire_one_step(grid, 1)
+    grid = generateMaze(dimension,p)
     # print(grid)
+    grid = aStar(grid, (0,0), (9,9))
     # grid = bfs(grid, (0,0), (9,9))
 
     # Define colors for maze
