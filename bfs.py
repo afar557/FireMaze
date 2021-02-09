@@ -1,3 +1,4 @@
+# ADD CHECKS TO SEE IF GOING TO BLOCKED POSITION
 from collections import deque
 
 maze = [[0,0,0],
