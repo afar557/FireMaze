@@ -6,16 +6,21 @@ from collections import deque
 from advancefire import advance_fire_one_step 
 from generateMaze import generateMaze, generateFireMaze
 from aStar import aStar
+from strategy1 import bfsStrat1
 
 def main():
     dimension = 10
-    p = .5
-    # grid = generateFireMaze(dimension,p)
+    p = 0.3
+    q = 1
+    start = (0,0)
+    finish = (9,9)
+    grid = generateFireMaze(dimension,p)
     # grid = advance_fire_one_step(grid, 1)
-    grid = generateMaze(dimension,p)
+    # grid = generateMaze(dimension,p)
     # print(grid)
-    grid = aStar(grid, (0,0), (9,9))
+    # grid = aStar(grid, (0,0), (9,9))
     # grid = bfs(grid, (0,0), (9,9))
+    grid = bfsStrat1(grid, start, finish, q)
 
     # Define colors for maze
     BLACK = (0, 0, 0)
