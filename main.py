@@ -12,7 +12,7 @@ from time import time
 
 
 def main():
-    # dimension = 5000
+    dimension = 5000
     # p = 0.1
     # q = 0.1
     # start = (0,0)
