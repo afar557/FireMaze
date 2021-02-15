@@ -4,7 +4,7 @@ import random
 from bfs import bfs
 
 maze = [[0,0,5],
-        [0,0,5],
+        [0,0,0],
         [0,0,0]]
 
 def bfsPath(maze, start, finish):
@@ -43,4 +43,4 @@ def bfsStrat2(maze, start, finish, q):
     return maze
 
 # bfs(maze, (0,0), (2,2))
-# bfsStrat2(maze, (0,0), (2,2), 0.2)
+# bfsStrat2(maze, (0,0), (2,2), .5)
