@@ -1,6 +1,7 @@
 import random
 from copy import copy, deepcopy
 
+# Function that returns the maze after the fire advances one step
 def advance_fire_one_step(maze, q):
     # Variables used to store the dimensions of the maze
     width = len(maze[0])
