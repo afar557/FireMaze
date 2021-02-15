@@ -40,6 +40,7 @@ def bfsStrat2(maze, start, finish, q):
             print("Goal Unreachable")
             return maze
     # print(maze)
+    print("Success!")
     return maze
 
 # bfs(maze, (0,0), (2,2))
