@@ -20,7 +20,6 @@ def dfs(maze, start, finish):
         
         visited[row][col] = 1
         maze[row][col] = 2
-        print('x: ',row,'y:',col)
         stack.append([row+1,col]) # move down
         stack.append([row-1,col]) # move up
         stack.append([row,col+1]) # move right
