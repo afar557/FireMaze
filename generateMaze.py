@@ -1,31 +1,37 @@
 import random
 
+# Function that generates the maze
 def generateMaze(dimension, p):
-    # initialize maze
+    # Initialize maze
     maze=[]
 
     for i in range(dimension): 
-        # initialize col to set vals
+        # Initialize col to set vals
         column = [] 
+
         for j in range(dimension): 
-            # for each square check if random(0,1) is less than or equal to p
+            # For each square check if random(0,1) is less than or equal to p
             if (random.uniform(0,1)<= p):
-                # set square to blocked
+                # Set square to blocked
                 column.append(1)
+
             else:
-                # set square to open
-                column.append(0) 
-        # append col to maze
+                # Set square to open
+                column.append(0)
+
+        # Append col to maze
         maze.append(column)
 
-    # set start & goal to open  
+    # Set start & goal to open & return maze  
     maze[0][0] = 0
     maze[dimension-1][dimension-1]=0
-
     return maze
 
+# Function that generates a fire maze
 def generateFireMaze(dimension, p):
+    # Initialize maze
     maze = generateMaze(dimension, p)
+
     x = 0
     y = 0
     count = 0
@@ -34,11 +40,6 @@ def generateFireMaze(dimension, p):
         x = random.randint(0,dimension-1)
         y = random.randint(0,dimension-1)
         count+=1
-        # print(count)
     
-    # print(x,y)
     maze[x][y] = 5
-    # print(maze)
     return maze
-
-# generateFireMaze(4,1)
