@@ -25,7 +25,7 @@ def dfs(maze, start, finish):
 
         # Mark the cell as part of the path
         maze[row][col] = 2
-        print('x: ',row,'y:',col)
+        # print('x: ',row,'y:',col)
 
         # Add all the neighbors of the current cell to the queue
         # Move down

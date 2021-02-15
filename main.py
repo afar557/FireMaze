@@ -8,21 +8,43 @@ from generateMaze import generateMaze, generateFireMaze
 from aStar import aStar
 from strategy1 import bfsStrat1
 from strategy2 import bfsStrat2
+from time import time
+
 
 def main():
-    dimension = 10
-    p = 0.1
-    q = 0.1
-    start = (0,0)
-    finish = (9,9)
-    grid = generateFireMaze(dimension,p)
+    # dimension = 5000
+    # p = 0.1
+    # q = 0.1
+    # start = (0,0)
+    # finish = (9,9)
+    # grid = generateFireMaze(dimension,p)
     # grid = advance_fire_one_step(grid, 1)
     # grid = generateMaze(dimension,p)
     # print(grid)
     # grid = aStar(grid, (0,0), (9,9))
     # grid = bfs(grid, (0,0), (9,9))
     # grid = bfsStrat1(grid, start, finish, q)
-    grid = bfsStrat2(grid, start, finish, q)
+    # grid = bfsStrat2(grid, start, finish, q)
+
+    # FOR PROBLEM 4
+    p = 0.3
+    diff = 0
+    dimension = 5000
+    print("starting")
+    while diff<60:
+        dimension+=100
+        grid = generateMaze(dimension,p)
+        start = time()
+        grid = dfs(grid, (0,0), (dimension-1,dimension-1))
+        end = time()
+
+        diff = end-start
+        print(diff , "for dim --> " , dimension)
+        
+
+    print(dimension)
+    return
+
 
     # Define colors for maze
     BLACK = (0, 0, 0)
