@@ -34,12 +34,9 @@ def generateFireMaze(dimension, p):
 
     x = 0
     y = 0
-    count = 0
     while (x == 0 and y == 0) or (x == dimension-1 and y == dimension-1) or (maze[x][y] == 1):
-        print('x',x,'y',y,'maze',maze[x][y])
         x = random.randint(0,dimension-1)
         y = random.randint(0,dimension-1)
-        count+=1
     
     maze[x][y] = 5
     return maze

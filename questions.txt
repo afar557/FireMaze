@@ -1,3 +1,4 @@
 Can the goal postition catch on fire?
 Is q randomly generated?
+try various q's (0.01, 0.02, 0.03 ...) for plotting
 Cube method for strategy 3?

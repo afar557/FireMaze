@@ -1,0 +1,227 @@
+\documentclass{article}
+
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%=====================================================
+% Add PACKAGES Here (You typically would not need to):
+%=====================================================
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{graphicx}
+%=====================================================
+% Ignore This Part (But Do NOT Delete It:)
+%=====================================================
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{fun}{Fun with Algorithms}
+\newtheorem*{challenge}{Challenge Yourself}
+\def\fline{\rule{0.75\linewidth}{0.5pt}}
+\newcommand{\finishline}{\vspace{-15pt}\begin{center}\fline\end{center}}
+\newtheorem*{solution*}{Solution}
+\newenvironment{solution}{\begin{solution*}}{{\finishline} \end{solution*}}
+\newcommand{\grade}[1]{\hfill{\textbf{($\mathbf{#1}$ points)}}}
+\newcommand{\thisdate}{\today}
+\newcommand{\thissemester}{\textbf{Rutgers: Spring 2021}}
+\newcommand{\thiscourse}{CS 440: Introduction to Artificial Intelligence} 
+\newcommand{\thishomework}{Number} 
+\newcommand{\thisname}{Name} 
+
+\newcommand{\thisheading}{
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { \textbf{\thiscourse \hfill \thissemester} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Project \#\thishomework \hfill} }
+       \vspace{2mm}
+         \hbox to 6.28in { { \hfill \thisdate \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { \emph{Names: \thisname \hfill }}
+      \vspace{2mm}}
+      }
+   \end{center}
+   \bigskip
+}
+
+%=====================================================
+% Some useful MACROS (you can define your own in the same exact way also)
+%=====================================================
+
+
+\newcommand{\ceil}[1]{{\left\lceil{#1}\right\rceil}}
+\newcommand{\floor}[1]{{\left\lfloor{#1}\right\rfloor}}
+\newcommand{\prob}[1]{\Pr\paren{#1}}
+\newcommand{\expect}[1]{\Exp\bracket{#1}}
+\newcommand{\var}[1]{\textnormal{Var}\bracket{#1}}
+\newcommand{\set}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\poly}{\mbox{\rm poly}}
+
+
+%=====================================================
+% Fill Out This Part With Your Own Information:
+%=====================================================
+
+
+\renewcommand{\thishomework}{1: This Maze is on \emph{Fire}} %Homework number
+\renewcommand{\thisname}{Aamna Farooq, Nada Elshamaa, and Asma Makhdoom} % Your name
+
+\begin{document}
+
+\thisheading
+
+
+
+\begin{problem}
+	Write an algorithm for generating a maze with a given dimension and obstacle density p.
+	\begin{enumerate}[label=(\Alph*)]
+		\item Algorithm $A$ divides an instance of size $n$ into $3$ subproblems of size $n/2$ each, recursively solves each one, and then takes $O(n)$ time 
+		to combine the solutions and output the answer.
+		\item Algorithm $B$ divides an instance of size $n$ into $2$ subproblems, one with size $n/2$ and one with size $n/3$, recursively solves each one, and then takes $O(n)$ time 
+		to combine the solutions and output the answer. 
+		\item Algorithm $C$ divides an instance of size $n$ into $4$ subproblems of size $n/5$ each, recursively solves each one, and then takes $O(n^2)$ time 
+		to combine the solutions and output the answer. 
+		\item Algorithm $D$ divides an instance of size $n$ in to $2$ subproblems of size $n-1$ each, recursively solves each one, and then takes $O(1)$ time to combine the solutions and output the answer. 
+	\end{enumerate}
+	
+	For each algorithm, write a recurrence that captures its runtime and \emph{use the recursion tree method} to solve this recurrence and find the \emph{tightest asymptotic} upper bound on runtime of the algorithm. \grade{25} 
+\end{problem}
+\begin{solution}
+	The solution to problem one goes here. 
+	\begin{enumerate}[label=(\Alph*)]
+		\item Recurrence for algorithm $A$:  
+		
+%=====================================================
+% LaTeX Tip: The figure environment is used for displaying the figure. Inside that, we use \includegraphics for adding a different file for each of the figure.
+% What you need to do is to create your figure using any tool you like (including drawing it by hand and scanning it), turn it into a pdf, name it "tree[X].pdf" 
+% where you replace [X] by A,B,C, or D depending on which part you are solving (i.e., use treeA.pdf, treeB.pdf,...). Finally, copy the file in the same directory
+% as this template and you should see that getting compiled into your solution. You can change the width=0.5\textwidth command to fix the size of the figure
+% in the final PDF. Finally, if the figure appears in the next page, do not worry about it as they will still have the proper caption. 
+%=====================================================		
+
+		\begin{figure}[h!]
+			\centering
+			\IfFileExists{treeA.pdf}{\includegraphics[width=0.5\textwidth]{treeA.pdf}}{No Figure Yet}
+		\caption{Recursion tree for algorithm $A$.} 
+		\end{figure}
+		
+		\item Recurrence for algorithm $B$:  
+		
+		\begin{figure}[h!]
+			\centering
+			\IfFileExists{treeB.pdf}{\includegraphics[width=0.5\textwidth]{treeB.pdf}}{No Figure Yet}
+		\caption{Recursion tree for algorithm $B$.} 
+		\end{figure}
+		
+		\item Recurrence for algorithm $C$:  
+		
+		\begin{figure}[h!]
+			\centering
+			\IfFileExists{treeC.pdf}{\includegraphics[width=0.5\textwidth]{treeC.pdf}}{No Figure Yet}
+		\caption{Recursion tree for algorithm $C$.} 
+		\end{figure}
+		
+		\item Recurrence for algorithm $D$:  
+		
+		\begin{figure}[h!]
+			\centering
+			\IfFileExists{treeD.pdf}{\includegraphics[width=0.5\textwidth]{treeD.pdf}}{No Figure Yet}
+		\caption{Recursion tree for algorithm $D$.} 
+		\end{figure}
+		
+	\end{enumerate}
+\end{solution}
+\smallskip
+
+\begin{problem}
+	You are given a permutation of $\set{1,\ldots,n}$ in an array $A[1:n]$. Design a \emph{randomized} algorithm that finds an index of some \emph{even} number 
+	in this array in only $O(1)$ \emph{expected runtime}. You can assume that 
+	creating a random number from $1$ to $n$ can be done in $O(1)$ time. Note that the array $A$ is already in the memory and your algorithm does not need to `read' this array.  \grade{25}
+	
+	\emph{Example:} Suppose the input is $[3,2,4,5,1]$; then the algorithm can return either index $2$ or index $3$. 	
+\end{problem}
+
+\smallskip
+
+\begin{solution}
+	Solution to problem two goes here. 
+\end{solution}
+
+
+\smallskip
+
+
+\begin{problem}
+	You are given an array $A[1:n]$ of $n$ positive \emph{real} numbers (not necessarily distinct). We say that $A$ is \underline{satisfiable} if after sorting the array $A$, $A[i] \geq i$ for all $1 \leq i \leq n$. 
+	Design an $O(n)$ time algorithm that determines whether or not $A$ is satisfiable. \grade{25}
+	
+	\emph{Example:} $[1.5,4.1,0.5,5.3]$ is \emph{not} satisfiable: after sorting  we get $[0.5,1.5,4.1,5.3]$ and $A[1] = 0.5 < 1$. But array $[1.5,4.1,2.4,5.3]$ is satisfiable:
+	 after sorting  we get $[1.5,2.4,4.1,5.3]$ and for $i \in \set{1,2,3,4}$, $A[i] \geq i$. 
+	
+\end{problem}
+
+\smallskip
+
+\begin{solution}
+	Solution to problem three goes here. 
+\end{solution}
+
+\smallskip
+
+\begin{problem}\label{DP}
+	Alice and Bob are delivering for the Pizza store that has $n$ orders today. From past experience, they both know that if Alice delivers the $i$-th order, the tip would be $A[i]$ dollars,
+	and if Bob delivers, the tip would be $B[i]$ dollars. Alice and Bob are close friends and their goal is to maximize the total tip they can get and then distribute it evenly between themselves. The problem is that 
+	Alice can only handle $a$ of the orders and Bob can only handle $b$ orders. They do not know how to do this so they ask for your help. 
+	
+	Design a dynamic programming algorithm that given the arrays $A[1:n],B[1:n]$, and integers $1 \leq a,b \leq n$, finds the largest amount of tips that Alice and Bob can collect together subject to their constraints. The 
+	runtime of your algorithm should be $O(n \cdot a \cdot b)$ in the worst case. \grade{25}
+	
+	\emph{Example:} Suppose $A = [2,4,5,1]$, $B=[1,7,2,5]$, $a=2$ and $b=1$. Then the answer is $14$ by Alice delivering $2,3$ and Bob delivering $4$ (so $4+5+5 = 14$), or Alice delivering $1,3$ and Bob delivering $2$ ($2+5+7=14$).  
+\end{problem}
+
+\smallskip
+
+\begin{solution}
+	Solution to problem four goes here. 
+\end{solution}
+
+\smallskip
+
+
+
+\begin{challenge}
+	A standard dynamic programming algorithm for Problem~\ref{DP} requires $O(n \cdot a \cdot b)$ \emph{space} in addition to the same runtime. The goal of this question is to improve
+	this space bound and further extend the algorithm.  \grade{0}
+	\begin{enumerate}[label=(\alph*)]
+	\item Design an algorithm for this problem that requires only $O(n+a \cdot b)$ space instead and still has the worst-case runtime of $O(n \cdot a \cdot b)$ (this part is rather standard and is not that challenging). 
+	\item Design an algorithm with the same space $O(n+a \cdot b)$ and time $O(n \cdot a \cdot b)$ that in addition to the value of the largest possible tip, can also output the set of deliveries Alice and Bob should take
+	in order to achieve such a collection of tips (this part may be really challenging).
+	\end{enumerate}
+	
+\end{challenge}
+
+\begin{fun}
+Recall that Fibonacci numbers form a sequence $F_n$ where $F_0 = 0$, $F_1 = 1$, and $F_n = F_{n-1} + F_{n-2}$. 
+The standard algorithm for finding the $n$-th Fibonacci number takes $O(n)$ time. The goal of this question is to design a significantly faster algorithm for this problem. \grade{0}
+	\begin{enumerate}[label=(\alph*)]
+		\item Prove by induction that for all $n \geq 1$: 
+		\begin{align*}
+			\begin{bmatrix}
+				1 & 1 \\
+				1 & 0
+			\end{bmatrix}^n
+			&= 	\begin{bmatrix}
+				F_{n+1} & F_n \\
+				F_n & F_{n-1}
+			\end{bmatrix}.
+		\end{align*}
+		\item Use the first part to design an algorithm that finds $F_n$ in $O(\log{n})$ time. 
+	\end{enumerate}	 
+\end{fun}
+\end{document}
