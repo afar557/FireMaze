@@ -32,3 +32,12 @@ from dfs import dfs
         bfsNodes.append(bfsSum/50)
         aStarNodes.append(aStarSum/50)
 
+    plt.plot(obstacleDensity, bfsNodes, label = "bfs")
+    plt.plot(obstacleDensity, aStarNodes, label = "a*")
+    plt.xlabel('obstacle density p')
+    plt.ylabel('# of nodes explored')
+    plt.title('# of nodes explored by BFS - # of nodes explored by A*  VS  obstacle density p ')
+    plt.legend()
+    plt.show()
+
+getPlot()
