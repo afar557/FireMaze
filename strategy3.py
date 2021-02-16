@@ -2,14 +2,19 @@ from queue import PriorityQueue
 import math
 from advancefire import advance_fire_one_step
 
-# # Function that returns the euclidean distance between two points on the maze
-# def heuristic(maze, q, currentPos):
-#     sum = 0
-#     for i in range(10):
-#         tempMaze = advance_fire_one_step(maze, q)
-#         if tempMaze[currentPos[0]][currentPos[1]] == 5:
-#             sum+=1
-#     return sum/10
+
+maze = [[0,5,0],
+        [0,0,0],
+        [0,0,0]]
+
+# Function that returns the euclidean distance between two points on the maze
+def fireHeuristic(maze, q, currentPos):
+    sum = 0
+    for i in range(10):
+        tempMaze = advance_fire_one_step(maze, q)
+        if tempMaze[currentPos[0]][currentPos[1]] == 5:
+            sum+=1
+    return sum/10
 
 def heuristic(a,b):
     return math.sqrt(((a[0]-b[0])**2) + ((a[1] - b[1])**2))
@@ -64,23 +69,50 @@ def aStarF(maze, start, finish, q):
 
                     # Add the neighbor into prev
                     prev[(x2,y2)] = current
-        count+=1
-        maze = advance_fire_one_step(maze, q)
-    print(count)
     # Return if a path was not found
     if finish not in prev:
         print("goal unreachable")
+        return None
+
+    return prev
+
+def driver(maze, start, finish, q):
+
+    prev = aStarF(maze, start, finish, q)
+    tempfin = finish
+    if prev!=None:
+        # Appending path to the stack
+        stack = []
+        stack.append(finish)
+        while stack[-1] != start:
+            stack.append(prev[finish])
+            finish = stack[-1]
+        while stack:
+            node = stack.pop()
+            maze[node[0]][node[1]]=2
+            maze = advance_fire_one_step(maze, q)
+
+            # check if any of the cells are on fire
+            for i in range(len(stack)-1, -1, -1):
+                if maze[stack[i][0]][stack[i][1]] == 5:
+                    # recall A*
+                    prev = aStarF(maze, node, tempfin, q)
+                    if prev!=None:
+                        stack = []
+                        finish = tempfin
+                        stack.append(finish)
+                        while stack[-1] != node:
+                            stack.append(prev[finish])
+                            finish = stack[-1]
+                        break
+                    else:
+                        print("no path found")
+                        return maze
+    else:
+        print("no path found")
         return maze
-
-    # Mark the path on the maze and return the maze
-    node = finish
-    maze[node[0]][node[1]]=2
-
-    while node != start:
-        node = prev[finish]
-        finish = node
-        maze[node[0]][node[1]]=2
     return maze
 
             
 
+# print(driver(maze, (0,0), (2,2), .2))
