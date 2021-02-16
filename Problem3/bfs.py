@@ -30,4 +30,5 @@ def bfs(maze, start, finish):
                 queue.append(path + [(x2, y2)]) 
                 seen.add((x2, y2))
     #did not find shortest path
+    print("goal unreachable")
     return len(seen)

@@ -58,6 +58,7 @@ def aStar(maze, start, finish):
     
     # Return if a path was not found
     if finish not in prev:
+        print("goal unreachable")
         return len(prev)
 
     # Mark the path on the maze and return the maze
