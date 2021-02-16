@@ -1,6 +1,6 @@
 from collections import deque
 
-# Function that executes the BFS algorithm and returns the maze with the path
+# Function that executes the BFS algorithm and returns the number of nodes explored by the algoorithm
 def bfs(maze, start, finish):
     # Variables used to store the dimensions of the maze
     width = len(maze[0])
@@ -20,9 +20,7 @@ def bfs(maze, start, finish):
         # If the popped index is the finish index, meaning you have found the shortest path
         if x == finish[0] and y == finish[1]:
             # Mark the path and return the maze
-            for position in path:
-                maze[position[0]][position[1]] = 2
-            return maze
+            return len(seen)
         
         # Explore all 4 neighbors of the current cell: up, down, right and left
         for x2, y2 in ((x+1,y), (x-1,y), (x,y+1), (x,y-1)):
@@ -32,4 +30,4 @@ def bfs(maze, start, finish):
                 queue.append(path + [(x2, y2)]) 
                 seen.add((x2, y2))
     #did not find shortest path
-    return maze
+    return len(seen)
