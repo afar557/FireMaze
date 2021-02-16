@@ -23,3 +23,12 @@ from dfs import dfs
         aStarSum=0
 
         grid = generateMaze(dimension,p)
+
+        for i in range(50):
+            grid = generateMaze(dimension,p)
+            bfsSum += bfs(grid, start, finish)
+            aStarSum += aStar(grid, start, finish)
+
+        bfsNodes.append(bfsSum/50)
+        aStarNodes.append(aStarSum/50)
+
