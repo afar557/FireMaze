@@ -1,4 +1,7 @@
-Can the goal postition catch on fire?
-Is q randomly generated?
+Can the goal postition catch on fire? yes
+Is q randomly generated? no - should go through vals to fill plot
 try various q's (0.01, 0.02, 0.03 ...) for plotting
-Cube method for strategy 3?
+Cube method for strategy 3? 
+
+
+how to prioritize using 2 heurisitc values for strat 3? 

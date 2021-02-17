@@ -71,6 +71,7 @@
 
 \renewcommand{\thishomework}{1: This Maze is on \emph{Fire}} %Homework number
 \renewcommand{\thisname}{Aamna Farooq, Nada Elshamaa, and Asma Makhdoom} % Your name
+ \graphicspath{ {./images/} }
 
 \begin{document}
 
@@ -158,18 +159,21 @@
 
 
 \begin{problem}
-	You are given an array $A[1:n]$ of $n$ positive \emph{real} numbers (not necessarily distinct). We say that $A$ is \underline{satisfiable} if after sorting the array $A$, $A[i] \geq i$ for all $1 \leq i \leq n$. 
-	Design an $O(n)$ time algorithm that determines whether or not $A$ is satisfiable. \grade{25}
-	
-	\emph{Example:} $[1.5,4.1,0.5,5.3]$ is \emph{not} satisfiable: after sorting  we get $[0.5,1.5,4.1,5.3]$ and $A[1] = 0.5 < 1$. But array $[1.5,4.1,2.4,5.3]$ is satisfiable:
-	 after sorting  we get $[1.5,2.4,4.1,5.3]$ and for $i \in \set{1,2,3,4}$, $A[i] \geq i$. 
+	Write $BFS$ and $A*$ algorithms (using the euclidean distance metric) that take a maze and determine the shortest path from $S$ to $G$ if one exists. For as large a dimension as your system can handle, generate a plot of the average $'number$ $of$ $nodes$ $explored$ $by$ $BFS$ - $number$ $of$ $nodes$ $explored$ $by$ $A*$' vs $'obstacle$ $density$ $p'$. If there is no path from $S$ to $G$, what should this difference be? 
 	
 \end{problem}
 
 \smallskip
 
 \begin{solution}
-	Solution to problem three goes here. 
+    If there was no path from S to G then there would be no difference between the number of nodes explored. This is because A* and BFS each would try to exhaust every possible option and would therefore have the same number of nodes explored.
+    
+	\begin{figure}[h]
+	\includegraphics[width=12cm]{dim1000,10avg,step01}
+	\caption{Plot using a dimension of 1000, average of 10, 0<p<1 with step = 0.01}
+	\centering
+	\end{figure}
+	
 \end{solution}
 
 \smallskip
