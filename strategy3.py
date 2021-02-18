@@ -6,21 +6,78 @@ from advancefire import advance_fire_one_step
 maze = [[0,5,0],
         [0,0,0],
         [0,0,0]]
+    
+Maze3D = []
 
-# Function that returns the euclidean distance between two points on the maze
-def fireHeuristic(maze, q, currentPos):
-    sum = 0
-    for i in range(10):
+# getMazeWhen q = 1 (q, maze, timesteps)
+# 3dMaze = [maze]
+# for i in range(timesteps)
+#   newMaze = advance_fire(3DMaze[-1])
+#   3dMaze.append(newMaze)
+
+def deterministicMaze(maze, timesteps):
+    global Maze3D
+    q = 1
+    Maze3D = [maze]
+    for i in range(timestops):
+        newMaze = advance_fire_one_step(Maze3D[-1], q)
+        Maze3D.append(newMaze)
+
+# get Maze for 1 timestep when q = actual q
+# newMaze = dimxdim of zeroes
+# for x in range(10)
+#   tempMaze = advance_fire(maze)
+#   for i in range(len(newMaze))
+#       for j in range(len(newMaze[0]))
+#           if tempMaze[i][j] == 5
+#               newMaze[i][j] += 5
+# for i in range(len(newMaze))
+#   for j in range(len(newMaze[0]))
+#       if newMaze[i][j] != 1
+#           newMaze[i][j] /= 10
+def getProbMaze(maze, q):
+    dim = len(maze[0])
+    newMaze = [[0 for x in range(dim)] for y in range(dim)]
+    for x in range(10):
         tempMaze = advance_fire_one_step(maze, q)
-        if tempMaze[currentPos[0]][currentPos[1]] == 5:
-            sum+=1
-    return sum/10
+        for i in range(len(newMaze)):
+            for j in range(len(newMaze)):
+                if tempMaze[i][j] == 5:
+                    newMaze[i][j] += 5
+    for i in range(len(newMaze)):
+        for j in range(len(newMaze)):
+            if newMaze[i][j] != 1:
+                newMaze[i][j] /= 10
+
+# fucntuon that gets distance to fire
+def disttoFire(maze, currentpos):
+    mindist = len(maze)**2
+    for i in range(len(maze)):
+        for j in range(len(maze)):
+            if maze[i][j] == 5 and manDist(currentpos, (i,j))<mindist:
+                mindist = manDist(currentpos, (i,j))
+    return mindist
+
+# Man distance
+def manDist(a,b):
+    return abs(a[0] - b[0]) + abs(a[1] - b[1])
+
+# # Function that returns the euclidean distance between two points on the maze
+# def fireHeuristic(maze, q, currentPos):
+#     sum = 0
+#     for i in range(10):
+#         tempMaze = advance_fire_one_step(maze, q)
+#         if tempMaze[currentPos[0]][currentPos[1]] == 5:
+#             sum+=1
+#     return sum/10
 
 def heuristic(a,b):
     return math.sqrt(((a[0]-b[0])**2) + ((a[1] - b[1])**2))
             
 # Function that executes the A* algorithm and returns the maze with the path
 def aStarF(maze, start, finish, q):
+    global Maze3D
+
     # Create fringe using a priority queue
     fringe = PriorityQueue()
 
@@ -37,10 +94,15 @@ def aStarF(maze, start, finish, q):
 
     # Initialize x,y values to start
     x,y = start
-    count=0
-    while not fringe.empty():
+    timestep = 0
+    while not fringe.empty() and timestep<len(Maze3D):
+
         # Get the first index in the queue
         current = fringe.get()[1]
+
+        # Increment timestep
+        timestep+=1
+        maze = Maze3D[timestep]
 
         # If you get to the finish index, break out of the loop
         if current == finish:
@@ -69,75 +131,12 @@ def aStarF(maze, start, finish, q):
 
                     # Add the neighbor into prev
                     prev[(x2,y2)] = current
-    # Return if a path was not found
-    if finish not in prev:
-        print("goal unreachable")
-        return None
+    # # Return if a path was not found
+    # if finish not in prev:
+    #     print("goal unreachable")
+    #     return None
 
     return prev
-
-def driver(maze, start, finish, q):
-
-    prev = aStarF(maze, start, finish, q)
-    tempfin = finish
-    if prev!=None:
-        # Appending path to the stack
-        stack = []
-        stack.append(finish)
-        while stack[-1] != start:
-            stack.append(prev[finish])
-            finish = stack[-1]
-        while stack:
-            node = stack.pop()
-            maze[node[0]][node[1]]=2
-            maze = advance_fire_one_step(maze, q)
-
-            # check if any of the cells are on fire
-            for i in range(len(stack)-1, -1, -1):
-                if maze[stack[i][0]][stack[i][1]] == 5:
-                    # recall A*
-                    prev = aStarF(maze, node, tempfin, q)
-                    if prev!=None:
-                        stack = []
-                        finish = tempfin
-                        stack.append(finish)
-                        while stack[-1] != node:
-                            stack.append(prev[finish])
-                            finish = stack[-1]
-                        break
-                    else:
-                        print("no path found")
-                        return maze
-    else:
-        print("no path found")
-        return maze
-    return maze
-
-            
-
-# print(driver(maze, (0,0), (2,2), .2))
-
-            
-# getMazeWhen q = 1 (q, maze, timesteps)
-# 3dMaze = [maze]
-# for i in range(timesteps)
-#   newMaze = advance_fire(3DMaze[-1])
-#   3dMaze.append(newMaze)
-
-# get Maze for 1 timestep when q = actual q
-# newMaze = dimxdim of zeroes
-# for x in range(10)
-#   tempMaze = advance_fire(maze)
-#   for i in range(len(newMaze))
-#       for j in range(len(newMaze[0]))
-#           if tempMaze[i][j] == 5
-#               newMaze[i][j] += 5
-# for i in range(len(newMaze))
-#   for j in range(len(newMaze[0]))
-#       if newMaze[i][j] != 1
-#           newMaze[i][j] /= 10
-
-# fucntuon that gets distance to fire
 
 # strat3()
 # timesteps = get how far we are from the fire (mathattan distance)
@@ -151,3 +150,51 @@ def driver(maze, start, finish, q):
     #timesteps = get how far we are from the fire (mathattan distance)
     # get maze(s) for timesteps w/ q= actual q
     # aStar for that 3D maze
+def driver(maze, start, finish, q):
+    global Maze3D
+    timesteps = disttoFire(maze, start)
+
+    current = start
+    while current != finish:
+        deterministicMaze(maze, timesteps)
+        prev = aStarF(maze, current, finish, q)
+        if prev == None:
+            
+    # prev = aStarF(maze, start, finish, q)
+    # tempfin = finish
+    # if prev!=None:
+    #     # Appending path to the stack
+    #     stack = []
+    #     stack.append(finish)
+    #     while stack[-1] != start:
+    #         stack.append(prev[finish])
+    #         finish = stack[-1]
+    #     while stack:
+    #         node = stack.pop()
+    #         maze[node[0]][node[1]]=2
+    #         maze = advance_fire_one_step(maze, q)
+
+    #         # check if any of the cells are on fire
+    #         for i in range(len(stack)-1, -1, -1):
+    #             if maze[stack[i][0]][stack[i][1]] == 5:
+    #                 # recall A*
+    #                 prev = aStarF(maze, node, tempfin, q)
+    #                 if prev!=None:
+    #                     stack = []
+    #                     finish = tempfin
+    #                     stack.append(finish)
+    #                     while stack[-1] != node:
+    #                         stack.append(prev[finish])
+    #                         finish = stack[-1]
+    #                     break
+    #                 else:
+    #                     print("no path found")
+    #                     return maze
+    # else:
+    #     print("no path found")
+    #     return maze
+    # return maze
+
+         
+
+# print(driver(maze, (0,0), (2,2), .2))
