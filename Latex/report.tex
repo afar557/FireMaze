@@ -84,7 +84,7 @@
 	 
 \end{problem}
 \begin{solution}
-	The solution to problem one goes here. 
+	Please see generateMaze function within generateMaze.py in the code.  
 		
 %=====================================================
 % LaTeX Tip: The figure environment is used for displaying the figure. Inside that, we use \includegraphics for adding a different file for each of the figure.
@@ -151,7 +151,22 @@
 \smallskip
 
 \begin{solution}
-	Solution to problem four goes here. 
+	Solution to problem four goes here.
+	Our Strategy 3 algorithm tries to account for unknown future by trying to predict the path of the fire. We do this in 2 ways. 
+    \\\\
+	1. We employ a deterministic approach where we assume the fire will spread 100\% of the time to all nodes it could possibly spread to for each time step. Based on this we generate a 3-D maze which has a maze for each time step. The size of the 3-D maze is dependent on the distance from the current position to the fire. Based on the number of time steps we traverse through the 3-D maze and try to get as far as we can with a deterministic approach. 
+	\\
+	If this deterministic approach is unable to reach the goal, we use 2. 
+	\\\\
+	2. We employ a probabilistic approach where we assume where the fire will spread by generating an average of 10 possible mazes for each time step with the actual value of q. The average maze holds a probability for each cell catching on fire. Using each resulting average maze we generate a 3-D maze that holds an average maze for each time step, the number of time steps depending upon the distance of the current position on the path from the fire. From the last position of the path we traverse through the maze, choosing the cell that has the least probability of catching on fire at each time step.
+	\\\\
+	-include a*
+	- include dfs 
+	- include how we're handling heuristic in this approach
+	- how we're calculating distance to fire (manhattan) as opposed to euclidiean
+	- how we're keeping track of timesteps to access 3d maze
+	- switching between deterministic \& probabilistic
+	
 \end{solution}
 
 \smallskip
@@ -163,7 +178,9 @@
 \smallskip
 
 \begin{solution}
+% for some reason adding text to problem 5 moved all the pictures of problem 6 to the bottom of the pdf. not sure why this is happening
     Strategy 1:
+    
 	\begin{figure}[h]
     \centerline{\includegraphics{P6ST1.png}}
     \caption{Strategy 1, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.}
@@ -196,7 +213,8 @@
 \smallskip
 
 \begin{solution}
-	Solution to problem four goes here. 
+	Solution to problem four goes here.
+	- mentioned dont need deterministic approach at all - but isnt deterministic approach good? idk? 
 \end{solution}
 
 \smallskip
@@ -209,6 +227,7 @@
 
 \begin{solution}
 	Solution to problem four goes here. 
+	need to look at game theory lecture 
 \end{solution}
 
 \smallskip
