@@ -152,7 +152,7 @@ def aStarF(maze, start, finish):
 def driver(maze, start, finish, q):
     global Maze3D
 
-    # Check if it a path is possible through the maze
+    # Check if a path is possible through the maze
     test = deepcopy(maze)
     if dfs(test, start, finish) == 0:
         print("Maze unsolvable!")
