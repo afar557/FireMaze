@@ -13,8 +13,8 @@ from strategy3 import driver
 
 def main():
     dimension = 10
-    p = 0.1
-    q = 0.1
+    p = 0.2
+    q = 0.2
     start = (0,0)
     finish = (dimension-1,dimension-1)
     grid = generateFireMaze(dimension,p)
