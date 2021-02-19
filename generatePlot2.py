@@ -1,9 +1,8 @@
 import matplotlib.pyplot as plt
-from dfs import dfs
+from st3DFS import dfs
 from generateMaze import generateMaze, generateFireMaze
 import numpy as np
 
-# Befor running this code, change dfs code to return 1 if success and 0 if fail
 
 def getPlot():
     dimension = 100
@@ -26,5 +25,7 @@ def getPlot():
         successProb[-1] /= 50
     # print(successProb)
     plt.plot(ps, successProb)
+    plt.xlabel('Obstacle Density p')
+    plt.ylabel('Probability that S Can be Reached from G')
     plt.show()
 getPlot()
