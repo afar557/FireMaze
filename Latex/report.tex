@@ -103,8 +103,8 @@
 
 \smallskip
 
-\begin{solution}
-	If you want an algorithm that takes a maze and two locations within it, and determine whether one is reachable from the other $DFS$ is a better choice than $BFS$ because in this algorithm the optimal path does not matter. The purpose of $BFS$ is to find an optimal path but since we don't care about that we should choose the more efficient algorithm or the one that uses less compute power, which is $DFS$.
+\begin{solution} \hfill \\
+	If you want an algorithm that takes a maze and two locations within it, and determine whether one is reachable from the other $DFS$ is a better choice than $BFS$ because in this algorithm the optimal path does not matter. The purpose of $BFS$ is to find an optimal path but since we don't care about that we should choose the algorithm that uses less compute power, which is $DFS$.
 	
 	\begin{figure}[h]
 	\centering
@@ -159,21 +159,19 @@
 \smallskip
 
 \begin{solution}
-	Solution to problem four goes here.
 	Our Strategy 3 algorithm tries to account for unknown future by trying to predict the path of the fire. We do this in 2 ways. 
     \\\\
-	1. We employ a deterministic approach where we assume the fire will spread 100\% of the time to all nodes it could possibly spread to for each time step. Based on this we generate a 3-D maze which has a maze for each time step. The size of the 3-D maze is dependent on the distance from the current position to the fire. Based on the number of time steps we traverse through the 3-D maze and try to get as far as we can with a deterministic approach. 
+	1. We employ a deterministic approach where we assume the fire will spread 100\% of the time to all nodes it could possibly spread to for each time step. Based on this we generate a 3-D maze which has a maze for each time step. The size of the 3-D maze is dependent on the distance from the current position to the fire which is calculated using Manhattan distance. Based on the number of time steps we traverse through the 3-D maze and try to get as far as we can with a deterministic approach. 
 	\\
 	If this deterministic approach is unable to reach the goal, we use 2. 
 	\\\\
 	2. We employ a probabilistic approach where we assume where the fire will spread by generating an average of 10 possible mazes for each time step with the actual value of q. The average maze holds a probability for each cell catching on fire. Using each resulting average maze we generate a 3-D maze that holds an average maze for each time step, the number of time steps depending upon the distance of the current position on the path from the fire. From the last position of the path we traverse through the maze, choosing the cell that has the least probability of catching on fire at each time step.
+	\\ 
+	Once we have traversed the length of the time steps calculated using the distance from the fire, if we have not reached the goal we revert to the deterministic approach once again.
 	\\\\
-	-include a*
-	- include dfs 
-	- include how we're handling heuristic in this approach
-	- how we're calculating distance to fire (manhattan) as opposed to euclidiean
-	- how we're keeping track of timesteps to access 3d maze
-	- switching between deterministic \& probabilistic
+	Our strategy 3 is done using $A*$. $A*$ typically uses a heuristic value that is derived from calculating the euclidean distance of the current position from the goal and adding that to the traversed distance. This value is appended to a priority queue, where values are then chosen and dequeued based on their priority (smaller distances have higher priority). We altered this algorithm for strategy 3 by instead including a priority value that consisted of a tuple of 2 values. Our first value in the tuple consisted of the probability of that cell catching on fire, as calculated in our 3-D maze, summed with the probability of fire on that path so far. The second value in the tuple was of the distance heuristic (euclidean) that is typically used in $A*$. This tuple sorts the queue in ascending based on the first value and sub-sorts in ascending order based on the second value. We employed the use of a tuple in our priority queue because we wanted to prioritize survivability over getting the shortest possible path. 
+	\\\\
+	To optimize our algorithm and to preserve compute power we performed a $DFS$ algorithm on our initial maze before the fire has spread (time step = 0) to ensure that finish is reachable from start initially. Otherwise, it returns the maze because there is no possible path to finish.
 	
 \end{solution}
 
@@ -185,44 +183,43 @@
 
 \smallskip
 
-\begin{solution}
-% for some reason adding text to problem 5 moved all the pictures of problem 6 to the bottom of the pdf. not sure why this is happening
-    Strategy 1:
-    
-	\begin{figure}[h]
-    \centerline{\includegraphics{P6ST1.png}}
-    \caption{Strategy 1, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.}
-    \label{fig}
-    \end{figure}
- 
-    
-    Strategy 2: 
+\begin{solution} \hfill \\
     \begin{figure}[h]
-    \centerline{\includegraphics{P6ST2.png}}
-    \caption{Strategy 2, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.}
-    \label{fig}
-    \end{figure}
+	\centering
+	\IfFileExists{images/P6ST1.png}{\includegraphics[width=0.7\textwidth]{images/P6ST1.png}}{No Figure Yet}
+% 	\includegraphics[width=12cm]{dim100,50avg,step01}
+	\caption{Strategy 1, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.} 
+	\vspace{1cm}
+	\end{figure} 
     
-    
-    Strategy 3: 
     \begin{figure}[h]
-    \centerline{\includegraphics{P6ST2.png}}
-    \caption{Strategy 3, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.}
-    \label{fig}
-    \end{figure}
+	\centering
+	\IfFileExists{images/P6ST2.png}{\includegraphics[width=0.7\textwidth]{images/P6ST2.png}}{No Figure Yet}
+% 	\includegraphics[width=12cm]{dim100,50avg,step01}
+	\caption{Strategy 2, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.}
+	\end{figure}
+    
+    \begin{figure}[h]
+	\centering
+	\IfFileExists{images/P6ST2.png}{\includegraphics[width=0.7\textwidth]{images/P6ST2.png}}{No Figure Yet}
+% 	\includegraphics[width=12cm]{dim100,50avg,step01}
+	\caption{Strategy 3, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.}
+	\end{figure}
+    
 \end{solution}
 
 \smallskip
 
 \begin{problem}
-	If you had unlimited computational resources at your disposal, how could you improve on Strategy 3?
+	If you had unlimited computational resources at your disposal, how could you improve on Strategy 3? 
 \end{problem}
 
 \smallskip
 
-\begin{solution}
-	Solution to problem four goes here.
-	- mentioned dont need deterministic approach at all - but isnt deterministic approach good? idk? 
+\begin{solution} \hfill \\
+	If we had unlimited computational resources we wouldn't need to rely on a deterministic approach to get a path. The purpose of our deterministic approach was to find a path from start to finish in less time because if there exists a path when q=1, that path exists for all other values of q. Using the deterministic approach in our algorithm reduces our computational power because using this approach does not require calculating an average of mazes. Therefore, we would completely rely on the probabilistic approach in order to find the path from start to finish. The probabilistic approach is a more accurate representation of the maze because it uses the real value of q instead of q=1 in order to sample what the fire looks like in future time steps. \\ \\
+	Another approach we could take if we had unlimited computational resources is to calculate the state of the fire as far into the future as possible (i.e. until the goal can be reached). In our current algorithm, we calculate the number of time steps to look ahead in the future by how far we are from the fire currently. This caps how far we look into the future but if we had unlimited computational resources we would not need to place a limit on the number of steps to look ahead. \\ \\
+    Lastly, we would want to increase the number of samples we use to average each probability maze for each time step. Currently, we are only sampling 10 mazes for each time step. By gathering more samples, we will have a more accurate picture of what the fire could look like at that time step. \\
 \end{solution}
 
 \smallskip
@@ -233,9 +230,8 @@
 
 \smallskip
 
-\begin{solution}
-	Solution to problem four goes here. 
-	need to look at game theory lecture 
+\begin{solution} \hfill \\
+	 
 \end{solution}
 
 \smallskip
