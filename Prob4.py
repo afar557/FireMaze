@@ -10,14 +10,21 @@ def prob4dfs():
     diff = 0
     dimension = 4000
     print("starting DFS")
-    while diff<60:
-        dimension+=100
-        grid = generateMaze(dimension,p)
-        start = time()
-        grid = dfs(grid, (0,0), (dimension-1,dimension-1))
-        end = time()
+    while True:
+        avgdiff = 0
+        for i in range(50):
+            grid = generateMaze(dimension,p)
+            start = time()
+            grid = dfs(grid, (0,0), (dimension-1,dimension-1))
+            end = time()
 
-        diff = end-start
+            avgdiff += end-start
+
+        avgdiff /= 50
+        if avgdiff>60:
+            break
+        
+        dimension+=10
         print(diff , "for dim --> " , dimension)
 
     print(dimension)
@@ -28,14 +35,21 @@ def prob4bfs():
     diff = 0
     dimension = 5000
     print("starting BFS")
-    while diff<60:
-        dimension+=100
-        grid = generateMaze(dimension,p)
-        start = time()
-        grid = bfs(grid, (0,0), (dimension-1,dimension-1))
-        end = time()
+    while True:
+        avgdiff = 0
+        for i in range(50):
+            grid = generateMaze(dimension,p)
+            start = time()
+            grid = bfs(grid, (0,0), (dimension-1,dimension-1))
+            end = time()
 
-        diff = end-start
+            avgdiff += end-start
+        
+        avgdiff /= 50
+        if avgdiff>60:
+            break
+
+        dimension+=10
         print(diff , "for dim --> " , dimension)
         
     print(dimension)
@@ -46,16 +60,23 @@ def prob4Astar():
     diff = 0
     dimension = 5000
     print("starting A*")
-    while diff<60:
-        dimension+=100
-        grid = generateMaze(dimension,p)
-        start = time()
-        grid = aStar(grid, (0,0), (dimension-1,dimension-1))
-        end = time()
+    while True:
+        avgdiff = 0
+        for i in range(50):
+            grid = generateMaze(dimension,p)
+            start = time()
+            grid = aStar(grid, (0,0), (dimension-1,dimension-1))
+            end = time()
 
-        diff = end-start
-        print(diff , "for dim --> " , dimension)
+            avgdiff += end-start
+
+        avgdiff /= 50
+        if avgdiff>60:
+            break
         
+        dimension+=100 
+        print(diff , "for dim --> " , dimension)
+ 
     print(dimension)
     return
 prob4dfs()
