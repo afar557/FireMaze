@@ -81,22 +81,10 @@
 
 \begin{problem}
 	Write an algorithm for generating a maze with a given dimension and obstacle density p.
-	\begin{enumerate}[label=(\Alph*)]
-		\item Algorithm $A$ divides an instance of size $n$ into $3$ subproblems of size $n/2$ each, recursively solves each one, and then takes $O(n)$ time 
-		to combine the solutions and output the answer.
-		\item Algorithm $B$ divides an instance of size $n$ into $2$ subproblems, one with size $n/2$ and one with size $n/3$, recursively solves each one, and then takes $O(n)$ time 
-		to combine the solutions and output the answer. 
-		\item Algorithm $C$ divides an instance of size $n$ into $4$ subproblems of size $n/5$ each, recursively solves each one, and then takes $O(n^2)$ time 
-		to combine the solutions and output the answer. 
-		\item Algorithm $D$ divides an instance of size $n$ in to $2$ subproblems of size $n-1$ each, recursively solves each one, and then takes $O(1)$ time to combine the solutions and output the answer. 
-	\end{enumerate}
-	
-	For each algorithm, write a recurrence that captures its runtime and \emph{use the recursion tree method} to solve this recurrence and find the \emph{tightest asymptotic} upper bound on runtime of the algorithm. \grade{25} 
+	 
 \end{problem}
 \begin{solution}
 	The solution to problem one goes here. 
-	\begin{enumerate}[label=(\Alph*)]
-		\item Recurrence for algorithm $A$:  
 		
 %=====================================================
 % LaTeX Tip: The figure environment is used for displaying the figure. Inside that, we use \includegraphics for adding a different file for each of the figure.
@@ -105,47 +93,12 @@
 % as this template and you should see that getting compiled into your solution. You can change the width=0.5\textwidth command to fix the size of the figure
 % in the final PDF. Finally, if the figure appears in the next page, do not worry about it as they will still have the proper caption. 
 %=====================================================		
-
-		\begin{figure}[h!]
-			\centering
-			\IfFileExists{treeA.pdf}{\includegraphics[width=0.5\textwidth]{treeA.pdf}}{No Figure Yet}
-		\caption{Recursion tree for algorithm $A$.} 
-		\end{figure}
-		
-		\item Recurrence for algorithm $B$:  
-		
-		\begin{figure}[h!]
-			\centering
-			\IfFileExists{treeB.pdf}{\includegraphics[width=0.5\textwidth]{treeB.pdf}}{No Figure Yet}
-		\caption{Recursion tree for algorithm $B$.} 
-		\end{figure}
-		
-		\item Recurrence for algorithm $C$:  
-		
-		\begin{figure}[h!]
-			\centering
-			\IfFileExists{treeC.pdf}{\includegraphics[width=0.5\textwidth]{treeC.pdf}}{No Figure Yet}
-		\caption{Recursion tree for algorithm $C$.} 
-		\end{figure}
-		
-		\item Recurrence for algorithm $D$:  
-		
-		\begin{figure}[h!]
-			\centering
-			\IfFileExists{treeD.pdf}{\includegraphics[width=0.5\textwidth]{treeD.pdf}}{No Figure Yet}
-		\caption{Recursion tree for algorithm $D$.} 
-		\end{figure}
-		
-	\end{enumerate}
 \end{solution}
 \smallskip
 
 \begin{problem}
-	You are given a permutation of $\set{1,\ldots,n}$ in an array $A[1:n]$. Design a \emph{randomized} algorithm that finds an index of some \emph{even} number 
-	in this array in only $O(1)$ \emph{expected runtime}. You can assume that 
-	creating a random number from $1$ to $n$ can be done in $O(1)$ time. Note that the array $A$ is already in the memory and your algorithm does not need to `read' this array.  \grade{25}
+	Write a $DFS$ algorithm that takes a maze and two locations within it, and determines whether one is reachable from the other. Why is $DFS$ a better choice than $BFS$ here? For as large a dimension as your system can handle, generate a plot of 'obstacle density p' vs 'probability that S can be reached from G'
 	
-	\emph{Example:} Suppose the input is $[3,2,4,5,1]$; then the algorithm can return either index $2$ or index $3$. 	
 \end{problem}
 
 \smallskip
@@ -169,7 +122,7 @@
     If there was no path from S to G then there would be no difference between the number of nodes explored. This is because A* and BFS each would try to exhaust every possible option and would therefore have the same number of nodes explored.
     
 	\begin{figure}[h]
-	\includegraphics[width=12cm]{dim1000,10avg,step01}
+	\includegraphics[width=12cm]{dim1000,10avg,step0.01.png}
 	\caption{Plot using a dimension of 1000, average of 10, 0<p<1 with step = 0.01}
 	\centering
 	\end{figure}
@@ -178,15 +131,8 @@
 
 \smallskip
 
-\begin{problem}\label{DP}
-	Alice and Bob are delivering for the Pizza store that has $n$ orders today. From past experience, they both know that if Alice delivers the $i$-th order, the tip would be $A[i]$ dollars,
-	and if Bob delivers, the tip would be $B[i]$ dollars. Alice and Bob are close friends and their goal is to maximize the total tip they can get and then distribute it evenly between themselves. The problem is that 
-	Alice can only handle $a$ of the orders and Bob can only handle $b$ orders. They do not know how to do this so they ask for your help. 
-	
-	Design a dynamic programming algorithm that given the arrays $A[1:n],B[1:n]$, and integers $1 \leq a,b \leq n$, finds the largest amount of tips that Alice and Bob can collect together subject to their constraints. The 
-	runtime of your algorithm should be $O(n \cdot a \cdot b)$ in the worst case. \grade{25}
-	
-	\emph{Example:} Suppose $A = [2,4,5,1]$, $B=[1,7,2,5]$, $a=2$ and $b=1$. Then the answer is $14$ by Alice delivering $2,3$ and Bob delivering $4$ (so $4+5+5 = 14$), or Alice delivering $1,3$ and Bob delivering $2$ ($2+5+7=14$).  
+\begin{problem}
+	What's the largest dimension you can solve using $DFS$ at p = 0.3 in $less$ than a minute? What's the largest dimension you can solve using $BFS$ at p = 0.3 in $less$ than a minute? What's the largest dimension you can solve using $A*$ at p = 0:3 in $less$ than a minute?  
 \end{problem}
 
 \smallskip
@@ -197,35 +143,73 @@
 
 \smallskip
 
+\begin{problem}
+	Describe your improved Strategy 3. How does it account for the unknown future?
+\end{problem}
 
+\smallskip
 
-\begin{challenge}
-	A standard dynamic programming algorithm for Problem~\ref{DP} requires $O(n \cdot a \cdot b)$ \emph{space} in addition to the same runtime. The goal of this question is to improve
-	this space bound and further extend the algorithm.  \grade{0}
-	\begin{enumerate}[label=(\alph*)]
-	\item Design an algorithm for this problem that requires only $O(n+a \cdot b)$ space instead and still has the worst-case runtime of $O(n \cdot a \cdot b)$ (this part is rather standard and is not that challenging). 
-	\item Design an algorithm with the same space $O(n+a \cdot b)$ and time $O(n \cdot a \cdot b)$ that in addition to the value of the largest possible tip, can also output the set of deliveries Alice and Bob should take
-	in order to achieve such a collection of tips (this part may be really challenging).
-	\end{enumerate}
-	
-\end{challenge}
+\begin{solution}
+	Solution to problem four goes here. 
+\end{solution}
 
-\begin{fun}
-Recall that Fibonacci numbers form a sequence $F_n$ where $F_0 = 0$, $F_1 = 1$, and $F_n = F_{n-1} + F_{n-2}$. 
-The standard algorithm for finding the $n$-th Fibonacci number takes $O(n)$ time. The goal of this question is to design a significantly faster algorithm for this problem. \grade{0}
-	\begin{enumerate}[label=(\alph*)]
-		\item Prove by induction that for all $n \geq 1$: 
-		\begin{align*}
-			\begin{bmatrix}
-				1 & 1 \\
-				1 & 0
-			\end{bmatrix}^n
-			&= 	\begin{bmatrix}
-				F_{n+1} & F_n \\
-				F_n & F_{n-1}
-			\end{bmatrix}.
-		\end{align*}
-		\item Use the first part to design an algorithm that finds $F_n$ in $O(\log{n})$ time. 
-	\end{enumerate}	 
-\end{fun}
+\smallskip
+
+\begin{problem}
+	Plot, for Strategy 1, 2, and 3, a graph of `average strategy success rate' vs `flammability q' at p = 0.3. Where do the different strategies perform the same? Where do they perform differently? Why?
+\end{problem}
+
+\smallskip
+
+\begin{solution}
+    Strategy 1:
+	\begin{figure}[h]
+    \centerline{\includegraphics{P6ST1.png}}
+    \caption{Strategy 1, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.}
+    \label{fig}
+    \end{figure}
+ 
+    
+    Strategy 2: 
+    \begin{figure}[h]
+    \centerline{\includegraphics{P6ST2.png}}
+    \caption{Strategy 2, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.}
+    \label{fig}
+    \end{figure}
+    
+    
+    Strategy 3: 
+    \begin{figure}[h]
+    \centerline{\includegraphics{P6ST2.png}}
+    \caption{Strategy 3, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.}
+    \label{fig}
+    \end{figure}
+\end{solution}
+
+\smallskip
+
+\begin{problem}
+	If you had unlimited computational resources at your disposal, how could you improve on Strategy 3?
+\end{problem}
+
+\smallskip
+
+\begin{solution}
+	Solution to problem four goes here. 
+\end{solution}
+
+\smallskip
+
+\begin{problem}
+	If you could only take ten seconds between moves (rather than doing as much computation as you like), how would that change your strategy? Describe such a potential Strategy 4.
+\end{problem}
+
+\smallskip
+
+\begin{solution}
+	Solution to problem four goes here. 
+\end{solution}
+
+\smallskip
+
 \end{document}
