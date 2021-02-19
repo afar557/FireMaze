@@ -16,7 +16,7 @@ from dfs import dfs
 #         [0,1,0,0,0,0],
 #         [1,0,0,0,0,0]]
 def getPlot():
-    dimension = 1000
+    dimension = 100
     start = (0,0)
     finish = (dimension-1,dimension-1)
 
@@ -32,7 +32,7 @@ def getPlot():
 
         grid = generateMaze(dimension,p)
 
-        for i in range(10):
+        for i in range(50):
             grid = generateMaze(dimension,p)
             bfsSum += bfs(grid, start, finish)
             aStarSum += aStar(grid, start, finish)
@@ -48,7 +48,7 @@ def getPlot():
     plt.legend()
     plt.show()
 
-# getPlot()
+getPlot()
 dimension = 15
 maze = generateMaze(dimension,0.4)
 print(maze)
