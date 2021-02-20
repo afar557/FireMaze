@@ -59,7 +59,7 @@ def prob4bfs():
 
 def prob4Astar():
     p = 0.3
-    dimension = 2000
+    dimension = 2500
     print("starting A*")
     while True:
         print(dimension)
@@ -71,7 +71,7 @@ def prob4Astar():
             end = time()
 
             avgdiff += end-start
-            print("Diff is -> ", end-start)
+            # print("Diff is -> ", end-start)
 
         avgdiff /= 10
         print(avgdiff , "for dim --> " , dimension)
@@ -80,4 +80,4 @@ def prob4Astar():
             continue
         dimension+=10
     return
-prob4dfs()
+prob4Astar()
