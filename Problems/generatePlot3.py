@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import sys, os
+import sys
 
 sys.path.append("..")
 
 from generateMaze import generateMaze
-from Problem3.bfs import bfs
-from Problem3.aStar import aStar
+from Problems.bfs import bfs
+from Problems.aStar import aStar
 from dfs import dfs
 
 # maze = [[0,0,0,0,0,1],
@@ -16,7 +16,7 @@ from dfs import dfs
 #         [0,1,0,0,0,0],
 #         [1,0,0,0,0,0]]
 def getPlot():
-    dimension = 100
+    dimension = 10
     start = (0,0)
     finish = (dimension-1,dimension-1)
 

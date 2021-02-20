@@ -1,6 +1,10 @@
 from collections import deque
-from advancefire import advance_fire_one_step
 import random
+import sys
+
+
+sys.path.append("..")
+from advancefire import advance_fire_one_step
 from bfs import bfs
 
 # Function that executes the BFS algorithm and returns the maze with the path

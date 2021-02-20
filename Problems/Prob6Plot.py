@@ -1,8 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from strategy1 import bfsStrat1
-from strategy2 import bfsStrat2
-from strategy3 import driver
+import sys
+
+sys.path.append("..")
+from Strategies.strategy1 import bfsStrat1
+from Strategies.strategy2 import bfsStrat2
+from Strategies.strategy3 import driver
 from generateMaze import generateMaze, generateFireMaze
 
 def st1plot():

@@ -1,7 +1,10 @@
 import matplotlib.pyplot as plt
-from st3DFS import dfs
-from generateMaze import generateMaze, generateFireMaze
 import numpy as np
+import sys
+
+sys.path.append("..")
+from dfs import strat3dfs
+from generateMaze import generateMaze, generateFireMaze
 
 
 def getPlot():
@@ -19,7 +22,7 @@ def getPlot():
         successProb.append(0)
         for i in range(50):
             grid = generateMaze(dimension,p)
-            goalReached = dfs(grid, start, finish)
+            goalReached = strat3dfs(grid, start, finish)
             # print(goalReached)
             successProb[-1] += goalReached
         successProb[-1] /= 50

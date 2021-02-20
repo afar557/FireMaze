@@ -1,8 +1,11 @@
 from queue import PriorityQueue
 import math
-from advancefire import advance_fire_one_step
 from copy import deepcopy
-from st3DFS import dfs
+import sys
+
+sys.path.append("..")
+from advancefire import advance_fire_one_step
+from dfs import strat3dfs
 
 Maze3D = []
 
@@ -154,7 +157,7 @@ def driver(maze, start, finish, q):
 
     # Check if a path is possible through the maze
     test = deepcopy(maze)
-    if dfs(test, start, finish) == 0:
+    if strat3dfs(test, start, finish) == 0:
         print("Maze unsolvable!")
         return maze
 

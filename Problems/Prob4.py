@@ -1,4 +1,8 @@
 from time import time
+import sys
+
+
+sys.path.append("..")
 from generateMaze import generateMaze, generateFireMaze
 from dfs import dfs
 from bfs import bfs

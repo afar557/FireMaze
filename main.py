@@ -1,15 +1,16 @@
 import random
 import pygame
+from time import time
+from collections import deque
+
 from bfs import bfs
 from dfs import dfs
-from collections import deque
 from advancefire import advance_fire_one_step 
 from generateMaze import generateMaze, generateFireMaze
 from Problem3.aStar import aStar
-from strategy1 import bfsStrat1
-from strategy2 import bfsStrat2
-from time import time
-from strategy3 import driver
+from Strategies.strategy1 import bfsStrat1
+from Strategies.strategy2 import bfsStrat2
+from Strategies.strategy3 import driver
 
 def main():
     dimension = 10
