@@ -146,8 +146,10 @@
 
 \smallskip
 
-\begin{solution}
-	Solution to problem four goes here. 
+\begin{solution} \hfill \\
+	Largest dimension we can solve using $DFS$ at p = 0.3 in $less$ than a minute: \\
+	Largest dimension we can solve using $BFS$ at p = 0.3 in $less$ than a minute: \\
+	Largest dimension we can solve using $A*$ at p = 0.3 in $less$ than a minute: \\
 \end{solution}
 
 \smallskip
@@ -183,33 +185,24 @@
 
 \smallskip
 
-\begin{solution} \hfill \\
+\begin{solution} \hfill
     \begin{figure}[h]
 	\centering
-	\IfFileExists{images/P6ST1.png}{\includegraphics[width=0.7\textwidth]{images/P6ST1.png}}{No Figure Yet}
+	\IfFileExists{images/p6.png}{\includegraphics[width=1.1\textwidth]{images/p6.png}}{No Figure Yet}
 % 	\includegraphics[width=12cm]{dim100,50avg,step01}
-	\caption{Strategy 1, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.} 
-	\vspace{1cm}
+	\caption{} 
 	\end{figure} 
+	\begin{center}
+	Strategy 1, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.
+	
+	Strategy 2, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.
+	
+	Strategy 3, Using a dimension of 10, average of 50, p=0.3, q with step of 0.1. 
+    \end{center}
     
-    \begin{figure}[h]
-	\centering
-	\IfFileExists{images/P6ST2.png}{\includegraphics[width=0.7\textwidth]{images/P6ST2.png}}{No Figure Yet}
-% 	\includegraphics[width=12cm]{dim100,50avg,step01}
-	\caption{Strategy 2, Using a dimension of 100, average of 50, p=0.3, q with step of 0.1.}
-	\end{figure}
-    
-    \begin{figure}[h]
-	\centering
-	\IfFileExists{images/P6ST3.png}{\includegraphics[width=0.7\textwidth]{images/P6ST3.png}}{No Figure Yet}
-% 	\includegraphics[width=12cm]{dim100,50avg,step01}
-	\caption{Strategy 3, Using a dimension of 10, average of 50, p=0.3, q with step of 0.1.}
-	\end{figure}
-    
+    Strategies 1, 2, and 3 perform the same from p = 0 to p = 0.2. Strategy 3 spikes up around p = 0.3. Strategy 1 has a higher value of success compared to Strategy 2 for p = 0.4. Strategy 3 has the highest success value at p = 0.6 and p = 0.9 compared to Strategies 1 and 2. This is because Strategy 3 should perform better than Strategies 1 and 2 with higher p values.
 \end{solution}
-
 \smallskip
-
 \begin{problem}
 	If you had unlimited computational resources at your disposal, how could you improve on Strategy 3? 
 \end{problem}
