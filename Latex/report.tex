@@ -161,7 +161,8 @@
 \smallskip
 
 \begin{solution}
-	Our Strategy 3 algorithm tries to account for unknown future by trying to predict the path of the fire. We do this in 2 ways. 
+
+	Our Strategy 3 algorithm SPOOFFs (Simulates Probability Of Our Future Fire) because TGIF(This Grid Is on Fire). It tries to account for unknown future by trying to predict the path of the fire. We do this in 2 ways. 
     \\\\
 	1. We employ a deterministic approach where we assume the fire will spread 100\% of the time to all nodes it could possibly spread to for each time step. Based on this we generate a 3-D maze which has a maze for each time step. The size of the 3-D maze is dependent on the distance from the current position to the fire which is calculated using Manhattan distance. Based on the number of time steps we traverse through the 3-D maze and try to get as far as we can with a deterministic approach. 
 	\\
@@ -224,9 +225,31 @@
 \smallskip
 
 \begin{solution} \hfill \\
+     If we can only take 10 seconds between moves we would want to reduce the compute time our algorithm is taking. 
+     \\\\
+     Assuming the fire advances one step every 10 seconds, we would compute a path using BFS for as many neighboring layers we could reach within 5 seconds. From the last set of neighbors, we would compute the Manhattan distance from the goal and choose the path whose final layer leaves it closest to the goal. 
+     \\\\
+	 We would repeat this code until we either reach the goal, cannot move further due to a blockage, or the goal is on fire. 
+	 We are assigning 5 seconds to get as far as we can with our path because we anticipate that calculating the Manhattan distance & path of each neighbor will have a time complexity of less than or equal to 5 seconds. 
 	 
+	 
+% 	 If we can only take 10 seconds between moves we would want to reduce the compute time our algorithm is taking. A possible approach to this would be utilizing local search algorithms. The purpose of this would be because while finding the shortest path within these constraints might be impossible, finding a solution that can work, albeit not optimally, is preferable. 
 \end{solution}
 
+\textbf{Work Distribution}
+\\
+The work is our own and not copied or taken from any other students. 
+\\\\
+To work on this project we would meet up over video calls daily and discuss problems and our solutions. One person would then screen share and code while the others would contribute and also assist in coding using the request remote control feature in zoom. We would alternate in screen sharing and upload to git for version control. 
+\\\\
+The report was done similarly. We each took on a plot and a question to complete on our own. Then met to complete the rest as a group over video call. 
+\\
+$Asma$ $Makhdoom:$ Problem 2
+\\
+$Aamna$ $Farooq:$ Problem 3
+\\
+$Nada$ $Elshamaa:$ Problem 4 and Problem 6
+\\
 \smallskip
 
 \end{document}
